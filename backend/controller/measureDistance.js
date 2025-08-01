@@ -1,6 +1,8 @@
-const { getRoute } = require('./externalAPIs');
+const { getRoute } = require("../ExternalAPI/getRoute");
 const { buildGraph } = require('./buildGraph');
 const dijkstra = require('./dijkstra');
+const { extractComponents } = require("../ExternalAPI/getAQI");
+
 
 const findNearestKey = (coord, nodeMap) => {
     let minDist = Infinity;
@@ -16,7 +18,6 @@ const findNearestKey = (coord, nodeMap) => {
 };
 
 
-
 const measureDistance = async (req, res) => {
     try {
         const { start, end } = req.body;
@@ -24,9 +25,11 @@ const measureDistance = async (req, res) => {
         const route = await getRoute(start, end);
         const coordinates = route.features[0].geometry.coordinates;
 
+        const [startLon, startLat] = start;
+        const componentsList = await extractComponents(startLat, startLon);
+
         const { graph, nodeMap } = await buildGraph(coordinates);
 
-        // Use nearest key instead of exact formatting
         const startKey = findNearestKey(start, nodeMap);
         const endKey = findNearestKey(end, nodeMap);
 
@@ -39,7 +42,6 @@ const measureDistance = async (req, res) => {
             return res.status(400).json({ error: 'No path found' });
         }
 
-        // Interpolate path from ORS data
         const parseKey = key => nodeMap[key]; // lon, lat
         const isClose = (c1, c2, tol = 1e-4) =>
             Math.abs(c1[0] - c2[0]) <= tol && Math.abs(c1[1] - c2[1]) <= tol;
@@ -64,23 +66,19 @@ const measureDistance = async (req, res) => {
             }
         }
 
-        // Add last endpoint if not included
         const lastPoint = parseKey(path[path.length - 1]);
         if (!fullPath.some(pt => isClose(pt, lastPoint))) {
             fullPath.push(lastPoint);
         }
 
-        // Remove duplicates
         const uniquePath = fullPath.filter(
             (coord, index, self) =>
                 index === self.findIndex(c => c[0] === coord[0] && c[1] === coord[1])
         );
 
-        const averageAQI = totalAQI / uniquePath.length;
-
         return res.json({
             route: uniquePath,
-            averageAQI
+            componentsList
         });
 
     } catch (error) {

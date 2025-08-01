@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import MapDisplay from "../Helpers/MapDisplay";
 import useGeoLocation from "../Helpers/GeoLocation";
+import AirQualityCard from '../Helpers/AirQualityCard';
 
 
 const MapView = () => {
     const [start, setStart] = useState(null);
     const [end, setEnd] = useState(null);
     const [route, setRoute] = useState([]);
-    const [aqi, setAqi] = useState(null);
+    const [componentsList, setComponentsList] = useState([])
     const [loading, setLoading] = useState(false);
     const [locationLoading, setLocationLoading] = useState(true);
 
@@ -29,7 +30,7 @@ const MapView = () => {
             setStart(latlng);
             setEnd(null);
             setRoute([]);
-            setAqi(null);
+            setComponentsList([]);
         }
     };
 
@@ -47,8 +48,7 @@ const MapView = () => {
             const latlngs = coords.map(([lng, lat]) => [lat, lng]);
             setRoute(latlngs);
 
-            const aqiValue = res.data.averageAQI;
-            setAqi(aqiValue !== null && aqiValue !== undefined ? aqiValue.toFixed(2) : 'N/A');
+            setComponentsList(res.data.componentsList);
         } catch (err) {
             console.error('Error fetching route:', err);
         }
@@ -99,12 +99,12 @@ const MapView = () => {
                         )
                     )}
 
-
-                    {aqi && (
-                        <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
-                            Air Quality Index: <span className="font-semibold">{aqi}</span>
-                        </p>
+                    {componentsList && (
+                        <AirQualityCard
+                            componentsList={componentsList}
+                        />
                     )}
+
                 </div>
             )
             }

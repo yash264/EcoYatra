@@ -1,4 +1,4 @@
-const { getAQI } = require('./externalAPIs');
+const { getAQI } = require("../ExternalAPI/getAQI");
 
 
 function haversineDistance(lat1, lon1, lat2, lon2) {

@@ -1,4 +1,4 @@
-const PriorityQueue = require('./priority_queue'); // You’ll write a simple one below
+const PriorityQueue = require('./priority_queue'); 
 
 function dijkstra(graph, start, end) {
     const distances = {};

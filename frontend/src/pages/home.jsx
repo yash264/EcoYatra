@@ -14,12 +14,23 @@ function Home() {
         </header>
 
         <main className="pt-16">
-          <Header />
-          <Features />
-          <MapView />
-          <Footer />
+          <section id="header">
+            <Header />
+          </section>
+
+          <section id="features">
+            <Features />
+          </section>
+
+          <section id="mapView">
+            <MapView />
+          </section>
+
+          <section id="footer">
+            <Footer />
+          </section>
         </main>
-        
+
       </body>
     </>
   );

@@ -5,9 +5,20 @@ function Navbar() {
 
     const [isOpen, setOpen] = useState(false);
 
+    const handleScroll = (sectionId) => {
+        const section = document.getElementById(sectionId);
+
+        if (section) {
+            window.scrollTo({
+                top: section.offsetTop - 50,
+                behavior: "smooth",
+            });
+        }
+    };
+
     return (
         <>
-            <header className="bg-white">
+            <header className="bg-neutral-800">
                 <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
                     <div className="flex h-16 items-center justify-between">
 
@@ -24,19 +35,39 @@ function Navbar() {
                             <nav aria-label="Global">
                                 <ul className="flex items-center gap-6 text-sm">
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Home </a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("header")}
+                                        >
+                                            Home
+                                        </button>
                                     </li>
 
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Features </a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("features")}
+                                        >
+                                            Features
+                                        </button>
                                     </li>
 
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> Map View </a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("mapView")}
+                                        >
+                                            Map View
+                                        </button>
                                     </li>
 
                                     <li>
-                                        <a className="text-gray-500 transition hover:text-gray-500/75" href="#"> About </a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("footer")}
+                                        >
+                                            About
+                                        </button>
                                     </li>
                                 </ul>
                             </nav>
@@ -65,20 +96,43 @@ function Navbar() {
                     </div>
 
                     {isOpen && (
-                        <div className="md:hidden px-4 py-2 bg-white border-t">
+                        <div className="md:hidden px-4 py-2 bg-neutral-800 border-t">
                             <nav aria-label="Global">
                                 <ul className="flex flex-col gap-4 text-sm">
                                     <li>
-                                        <a className="text-gray-700 transition hover:text-gray-900" href="#">Home</a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("home")}
+                                        >
+                                            Home
+                                        </button>
                                     </li>
+
                                     <li>
-                                        <a className="text-gray-700 transition hover:text-gray-900" href="#">Features</a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("features")}
+                                        >
+                                            Features
+                                        </button>
                                     </li>
+
                                     <li>
-                                        <a className="text-gray-700 transition hover:text-gray-900" href="#">Map View</a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("mapView")}
+                                        >
+                                            Map View
+                                        </button>
                                     </li>
+
                                     <li>
-                                        <a className="text-gray-700 transition hover:text-gray-900" href="#">About</a>
+                                        <button
+                                            className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
+                                            onClick={() => handleScroll("footer")}
+                                        >
+                                            About
+                                        </button>
                                     </li>
                                 </ul>
                             </nav>

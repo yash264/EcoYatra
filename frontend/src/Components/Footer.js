@@ -1,6 +1,7 @@
 import { AiFillLinkedin, AiFillInstagram } from "react-icons/ai";
 import { ImLocation, ImEnvelop } from "react-icons/im";
 
+
 function Footer() {
     return (
         <>
@@ -17,16 +18,15 @@ function Footer() {
                                 <ImEnvelop />&nbsp; yash.20222068@mnnit.ac.in
                             </p>
                             <p className="flex items-center gap-4">
-                                <ImLocation />&nbsp; National Institute of Technology Prayagraj
+                                <ImLocation />&nbsp; National Institute of Technology, Prayagraj
                             </p>
                         </div>
 
-                        <a
-                            href="#"
+                        <button
                             className="mt-8 inline-block rounded-full border border-white bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:ring-3 focus:outline-hidden"
                         >
                             Get Started
-                        </a>
+                        </button>
                     </div>
 
                     <div
@@ -39,30 +39,23 @@ function Footer() {
                         </ul>
 
                         <ul className="mt-8 flex justify-center gap-6 sm:mt-0 lg:justify-end">
-                            <li>
-                                <a
-                                    href="#"
-                                    rel="noreferrer"
-                                    target="_blank"
-                                    className="text-white text-2xl transition hover:opacity-75"
-                                >
-                                    <span className="sr-only">Instagram</span>
-                                    <AiFillInstagram />
-
-                                </a>
-                            </li>
 
                             <li>
-                                <a
-                                    href="#"
-                                    rel="noreferrer"
-                                    target="_blank"
+                                <button
                                     className="text-white text-2xl transition hover:opacity-75"
                                 >
                                     <span className="sr-only">LinkedIn</span>
                                     <AiFillLinkedin />
+                                </button>
+                            </li>
 
-                                </a>
+                            <li>
+                                <button
+                                    className="text-white text-2xl transition hover:opacity-75"
+                                >
+                                    <span className="sr-only">Instagram</span>
+                                    <AiFillInstagram />
+                                </button>
                             </li>
 
                         </ul>

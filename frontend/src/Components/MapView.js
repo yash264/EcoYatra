@@ -1,4 +1,3 @@
-// pages/MapView.js
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import MapDisplay from "../Helpers/MapDisplay";
@@ -11,12 +10,10 @@ const MapView = () => {
     const [route, setRoute] = useState([]);
     const [aqi, setAqi] = useState(null);
     const [loading, setLoading] = useState(false);
-    const [locationLoading, setLocationLoading] = useState(true); // 👈 new
+    const [locationLoading, setLocationLoading] = useState(true);
 
-    // useGeolocation will update `start`, so once that happens we stop showing the loading text
     useGeoLocation(setStart);
 
-    // ✅ Once `start` is set, stop loading
     useEffect(() => {
         if (start) {
             setLocationLoading(false);
@@ -62,10 +59,10 @@ const MapView = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
             <div className="text-center">
                 <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
-                    🚲 Least Polluted Route Finder
+                    📍 Navigate the Cleanest Way
                 </h2>
                 <p className="text-gray-600 dark:text-gray-300 mt-2">
-                    Click once to select <strong>start</strong>, again to select <strong>end</strong>.
+                    Click once to select <strong>destination</strong>, again to select <strong>end</strong>.
                 </p>
             </div>
 
@@ -75,7 +72,13 @@ const MapView = () => {
                 </div>
             )}
 
-            <MapDisplay start={start} end={end} route={route} handleSelect={handleSelect} center={start} />
+            <MapDisplay
+                start={start}
+                end={end}
+                route={route}
+                handleSelect={handleSelect}
+                center={start}
+            />
 
 
             {!locationLoading && (
@@ -99,7 +102,7 @@ const MapView = () => {
 
                     {aqi && (
                         <p className="text-lg font-medium text-gray-800 dark:text-gray-200">
-                            🌫️ Average AQI along route: <span className="font-semibold">{aqi}</span>
+                            Air Quality Index: <span className="font-semibold">{aqi}</span>
                         </p>
                     )}
                 </div>

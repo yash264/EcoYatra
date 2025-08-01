@@ -1,4 +1,3 @@
-// src/Helpers/MapDisplay.js
 import React, { useEffect } from 'react';
 import {
     MapContainer,
@@ -12,7 +11,7 @@ import {
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
-// Fix marker icon
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
     iconUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
@@ -20,7 +19,7 @@ L.Icon.Default.mergeOptions({
     shadowUrl: 'https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png',
 });
 
-// Allow selecting points
+
 const LocationSelector = ({ onSelect }) => {
     useMapEvents({
         click(e) {
@@ -30,13 +29,13 @@ const LocationSelector = ({ onSelect }) => {
     return null;
 };
 
-// Helper to programmatically set map center
+
 const SetMapCenter = ({ center }) => {
     const map = useMap();
 
     useEffect(() => {
         if (center) {
-            map.setView(center, 13); // Smooth pan to user location
+            map.setView(center, 13);
         }
     }, [center, map]);
 
@@ -44,7 +43,7 @@ const SetMapCenter = ({ center }) => {
 };
 
 const MapDisplay = ({ start, end, route, handleSelect, center }) => {
-    const initialPosition = center || [28.6139, 77.2090]; // fallback to New Delhi
+    const initialPosition = center || [28.6139, 77.2090];
 
     const startIcon = new L.Icon({
         iconUrl: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png',
@@ -67,10 +66,16 @@ const MapDisplay = ({ start, end, route, handleSelect, center }) => {
                 className="h-[80vh] w-full rounded border border-gray-400 shadow-md z-0"
                 scrollWheelZoom={true}
             >
-                <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                />
 
-                <SetMapCenter center={center} />
-                <LocationSelector onSelect={handleSelect} />
+                <SetMapCenter
+                    center={center}
+                />
+                <LocationSelector
+                    onSelect={handleSelect}
+                />
 
                 {start && (
                     <Marker position={start} icon={startIcon}>
@@ -82,6 +87,7 @@ const MapDisplay = ({ start, end, route, handleSelect, center }) => {
                         <Popup>End</Popup>
                     </Marker>
                 )}
+
                 {route.length > 0 && (
                     <Polyline positions={route} color="blue" weight={5} />
                 )}

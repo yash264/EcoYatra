@@ -22,7 +22,7 @@ function LocationSelector({ onSelect }) {
     return null;
 }
 
-export default function App() {
+function MapView () {
     const [start, setStart] = useState(null);
     const [end, setEnd] = useState(null);
     const [route, setRoute] = useState([]);
@@ -114,3 +114,5 @@ export default function App() {
         </div>
     );
 }
+
+export default MapView;

@@ -102,7 +102,7 @@ function Navbar() {
                                     <li>
                                         <button
                                             className="text-white text-sm font-semibold px-4 py-2 rounded transition duration-300 ease-in-out hover:bg-yellow-600 hover:scale-105"
-                                            onClick={() => handleScroll("home")}
+                                            onClick={() => handleScroll("header")}
                                         >
                                             Home
                                         </button>

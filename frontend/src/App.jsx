@@ -11,7 +11,7 @@ function App() {
     try {
       const response = await axios.get('https://ecoyatraserver.onrender.com/startServer');
 
-      console.log(response.data.message);
+      console.log(response.data);
 
     } catch (error) {
       console.error(error);

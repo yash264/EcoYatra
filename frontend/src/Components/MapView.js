@@ -39,7 +39,7 @@ const MapView = () => {
 
         setLoading(true);
         try {
-            const res = await axios.post('http://localhost:5000/api/measureDistance', {
+            const res = await axios.post('https://ecoyatra.onrender.com/measureDistance', {
                 start: [start.lng, start.lat],
                 end: [end.lng, end.lat],
             });

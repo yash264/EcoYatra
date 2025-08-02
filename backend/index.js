@@ -10,7 +10,7 @@ const port = process.env.port;
 const getShortestRoute = require("./routes/getShortestRoute");
 
 const corsOptions ={
-    origin: "http://localhost:3000",
+    origin: "https://ecoyatra-meta.vercel.app",
     methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
     credentials: true,
 }; 
@@ -20,6 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 app.use("/api", getShortestRoute);
+
+
+app.get('/startServer', (req, res) => {
+    res.status(200).send("Started the Server");
+})
 
 app.listen(port,()=>{
     console.log(`server is running on ${port}`);

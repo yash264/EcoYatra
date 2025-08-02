@@ -15,10 +15,10 @@ function Footer() {
 
                         <div class="col-4 mx-auto m-4 max-w-sm text-center text-white">
                             <p className="flex items-center gap-4">
-                                <ImEnvelop />&nbsp; yash.20222068@mnnit.ac.in
+                                <ImEnvelop />&nbsp; digital_India@nic.ac.in
                             </p>
                             <p className="flex items-center gap-4">
-                                <ImLocation />&nbsp; National Institute of Technology, Prayagraj
+                                <ImLocation />&nbsp; Vikas Bhawan, New Delhi 210004, Bharat.
                             </p>
                         </div>
 

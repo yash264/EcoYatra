@@ -13,7 +13,7 @@ function Footer() {
                             Stay Connected
                         </h2>
 
-                        <div class="col-4 mx-auto m-4 max-w-sm text-center text-white">
+                        <div class="col-4 mx-auto m-4 max-w-sm text-left text-white">
                             <p className="flex items-center gap-4">
                                 <ImEnvelop />&nbsp; digital_India@nic.ac.in
                             </p>

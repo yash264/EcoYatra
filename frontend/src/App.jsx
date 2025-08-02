@@ -9,7 +9,7 @@ function App() {
 
   const startServer = async () => {
     try {
-      const response = await axios.get('https://ecoyatra.onrender.com/startServer');
+      const response = await axios.get('https://ecoyatraserver.onrender.com/startServer');
 
       console.log(response.data.message);
 
